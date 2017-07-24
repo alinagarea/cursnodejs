@@ -1,2 +1,2 @@
 # cursnodejs
-Curs Node JS
+Writing in Markdown is not that hard!
