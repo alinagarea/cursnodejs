@@ -1,6 +1,6 @@
-buf = new Buffer(26);
-for (var i = 0 ; i < 26 ; i++) {
-  buf[i] = i + 97;
+var buf = new Buffer(26);
+for (let i = 0 ; i < 26 ; i++) { //let = var
+  buf[i] = i + 100;
 }
 
 console.log( buf.toString('ascii'));       // outputs: abcdefghijklmnopqrstuvwxyz
