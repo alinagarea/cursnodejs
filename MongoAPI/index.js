@@ -7,9 +7,17 @@ var uuid = require('uuid/v4');
 var app = express();
 var fs = require("fs");
 
-var mProducts = require('./modules/products');
-var mOrders = require('./modules/orders');
+// var Mongourl = "mongodb://<alinagarea>:<pinkfloyd147>@ds123193.mlab.com:23193/training_nodejs"
+var mongoUrl = "mongodb://alinagarea:pinkfloyd147@ds123193.mlab.com:23193/training_nodejs"
+var mongoClient = mongo.mongoClient;
 
+var mProducts = require('./modules/products');
+mProducts.config.mongoClient = mongoClient;
+mProducts.config.mongoUrl = mongoUrl;
+
+var mOrders = require('./modules/orders');
+mOrders.config.mongoClient = mongoClient;
+mOrders.config.mongoUrl = mongoUrl;
 //Products
 {
     app.put('/products', function (req, res) {
@@ -26,7 +34,10 @@ var mOrders = require('./modules/orders');
 
     app.get('/products', function (req, res) {
 
-        res.end();
+        var products = mProducts.listProduct();
+    
+        res.end(JSON.stringify(products));
+
 
     });
 
